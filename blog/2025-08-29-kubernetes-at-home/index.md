@@ -82,16 +82,20 @@ In addition to those IPs, I also reserved `10.10.0.50` for the control plane VIP
 Before creating our k8s environment, we need to configure the Talos cluster. This involves setting up the control plane and worker nodes, as well as configuring the networking and storage options.
 
 :::note    
-For way more detailed instructions, please refer to my documentation [here](example.com).
+For way more detailed instructions, please refer to my documentation [here](https://example.com).
 :::
 
 This is actually a really simple process, after installing the [`talosctl`](https://www.talos.dev/v1.10/talos-guides/install/talosctl/) utility, we can generate the necessary secrets and configuration files.
+
+1. **Generate the secrets**:
 
 ```
 talosctl gen secrets -o secrets.yaml
 ```
 
 This generated the `secrets.yaml` file, which contains the necessary secrets for the cluster, as I said before, Talos
+
+2. **Generate the configuration files**:
 
 ```
 talosctl gen config name-of-cluster https://10.10.0.50:6443 \ 
@@ -113,6 +117,8 @@ machine:
         vip:
           ip: 10.10.0.50
 ```
+3. **Apply the configuration**:
+
 Then, we can apply the configuration to each node:
 
 ```
@@ -127,14 +133,14 @@ talosctl apply-config --insecure -n 10.10.0.55 -f clusterconfig/worker.yaml
 ```
 By now, your nodes should be installing and rebooting.
 
-Setting up talosctl endpoints:
+Setting up `talosctl` endpoints:
 
 ```
 talosctl config endpoint 10.10.0.51 10.10.0.52 10.10.0.53
 talosctl config nodes 10.10.0.51
 ```
 
-Bootstrapping the cluster:
+4. **Bootstrapping the cluster**:
 
 ```
 talosctl bootstrap -n 10.10.0.51
@@ -152,3 +158,37 @@ NODE         NAMESPACE   TYPE     ID              VERSION   HOSTNAME        MACH
 10.10.0.51   cluster     Member   talos-l5m-ljy   1         talos-l5m-ljy   controlplane   Talos (v1.10.7)   ["10.10.0.52","2001:ipv6::11ff:fe26:46f0"]
 10.10.0.51   cluster     Member   talos-v9n-17e   1         talos-v9n-17e   worker         Talos (v1.10.7)   ["10.10.0.55","2001:ipv6::11ff:fed2:fbec"]
 ```
+
+### Accessing the Kubernetes cluster
+
+Now that your Talos cluster is up and running with k8s installed, you can access the Kubernetes API server using `kubectl`. First, you need to configure `kubectl` to use the correct context.
+
+1. **Get the kubeconfig file**:
+
+```
+talosctl kubeconfig -n 10.10.0.51 --force
+```
+
+:::note
+This will place the kubeconfig file in `~/.kube/config`.
+:::
+
+2. **Set the KUBECONFIG environment variable**:
+
+```
+export KUBECONFIG=~/.kube/config
+```
+
+3. **Verify the connection**:
+
+```
+correia@talos-ctl:~/talos$ kubectl get nodes
+NAME            STATUS   ROLES           AGE     VERSION
+talos-9gj-92t   Ready    control-plane   5h39m   v1.33.4
+talos-isd-h92   Ready    worker          5h39m   v1.33.4
+talos-jls-qix   Ready    control-plane   5h39m   v1.33.4
+talos-l5m-ljy   Ready    control-plane   5h39m   v1.33.4
+talos-v9n-17e   Ready    worker          5h38m   v1.33.4
+```
+
+And you're all set! You can now start deploying applications to your Kubernetes cluster. 🚀
