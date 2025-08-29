@@ -1,5 +1,5 @@
 ---
-slug: kubernetes at home
+slug: kubernetes-at-home
 title: Running Kubernetes on my Homelab
 authors: [correia]
 tags: [homelab,kubernetes]
@@ -12,7 +12,7 @@ This blog post will cover the steps I took, the challenges I faced, and the solu
 <!-- truncate -->
 
 :::note
-For the technical details, go to my separate documentation [here](https://example.com).
+For the technical details, go to my separate documentation [here](/docs/talos-and-kubernetes).
 :::
 
 ## Why?
@@ -43,7 +43,7 @@ After much consideration, I decided to go with [Talos](https://talos.dev/), a mo
 
 :::warning
 This is a high-level overview of the setup process.
-For way more detailed instructions, please refer to my documentation [here](https://example.com).
+For way more detailed instructions, please refer to my documentation [here](/docs/talos-and-kubernetes).
 :::
 
 Since I have the resources available, and if it isn't obvious by now, I decided to go with a virtualized setup. After downloading the [Talos ISO image](https://factory.talos.dev/), I uploaded it to my Proxmox VE environment.

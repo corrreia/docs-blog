@@ -1,0 +1,8 @@
+{
+  "label": "Deploy Talos and Kubernetes",
+  "position": 2,
+  "link": {
+    "type": "generated-index",
+    "slug": "talos-and-kubernetes"
+  }
+}
