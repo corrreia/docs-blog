@@ -1,0 +1,9 @@
+homelab:
+  label: homelab
+  permalink: /homelab
+  description: Projects related to my homelab setup
+
+kubernetes:
+  label: kubernetes
+  permalink: /kubernetes
+  description: Projects that involve Kubernetes
