@@ -5,7 +5,7 @@ import type * as Preset from '@docusaurus/preset-classic';
 // This runs in Node.js - Don't use client-side code here (browser APIs, JSX...)
 
 const config: Config = {
-  title: 'Tomás Correia\'s Docs and Blog',
+  title: 'Correia\'s Adventures',
   tagline: 'Collection of my adventures in tech and in my homelab',
   favicon: 'img/favicon.ico',
 
@@ -81,10 +81,14 @@ const config: Config = {
       items: [
         {
           to: 'https://docs.tomascorreia.net',
-          position: 'left',
           label: 'Documentation',
+          position: 'left',
         },
-        {to: 'https://blog.tomascorreia.net', label: 'Blog', position: 'left'},
+        {
+          to: 'https://blog.tomascorreia.net',
+          label: 'Blog',
+          position: 'left',
+        },
         {
           href: 'https://github.com/corrreia/docs-blog',
           label: 'GitHub',

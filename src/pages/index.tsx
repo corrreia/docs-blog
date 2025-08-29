@@ -16,13 +16,6 @@ function HomepageHeader() {
           {siteConfig.title}
         </Heading>
         <p className="hero__subtitle">{siteConfig.tagline}</p>
-        <div className={styles.buttons}>
-          <Link
-            className="button button--secondary button--lg"
-            to="/docs/intro">
-            Docusaurus Tutorial - 5min ⏱️
-          </Link>
-        </div>
       </div>
     </header>
   );
@@ -33,11 +26,39 @@ export default function Home(): ReactNode {
   return (
     
     <Layout
-      title={`Hello from ${siteConfig.title}`}
+      title={`${siteConfig.title}`}
       description="Description will go into a meta tag in <head />">
       <HomepageHeader />
       <main>
-        {/* <HomepageFeatures /> */}
+        <div className={styles.centerWrapper}>
+          <div className={styles.buttonsPretty}>
+            <Link
+              className="button button--secondary button--lg"
+              to="https://tomascorreia.net">
+              My Website
+            </Link>
+            <Link
+              className="button button--secondary button--lg"
+              to="https://cv.tomascorreia.net">
+              My CV
+            </Link>
+            <Link
+              className="button button--secondary button--lg"
+              to="https://blog.tomascorreia.net">
+              My Blog
+            </Link>
+            <Link
+              className="button button--secondary button--lg"
+              to="https://docs.tomascorreia.net">
+              My Docs
+            </Link>
+            <Link
+              className="button button--secondary button--lg"
+              to="https://github.com/corrreia/docs-blog">
+              GitHub
+            </Link>
+          </div>
+        </div>
       </main>
     </Layout>
   );
