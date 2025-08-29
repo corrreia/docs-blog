@@ -15,7 +15,7 @@ const config: Config = {
   },
 
   // Set the production url of your site here
-  url: 'https://docs.tomascorreia.net',
+  url: 'https://lab.tomascorreia.net',
   // Set the /<baseUrl>/ pathname under which your site is served
   // For GitHub pages deployment, it is often '/<projectName>/'
   baseUrl: '/',
@@ -33,7 +33,7 @@ const config: Config = {
   // may want to replace "en" with "zh-Hans".
   i18n: {
     defaultLocale: 'en',
-    locales: ['en', 'pt'],
+    locales: ['en'],
   },
 
   presets: [
@@ -45,7 +45,7 @@ const config: Config = {
           // Please change this to your repo.
           // Remove this to remove the "edit this page" links.
           editUrl:
-            'https://github.com/corrreia/docs-blog/docs/',
+            'https://github.com/corrreia/docs-blog/edit/main/',
         },
         blog: {
           showReadingTime: true,
@@ -80,15 +80,13 @@ const config: Config = {
       },
       items: [
         {
-          to: 'https://docs.tomascorreia.net',
+          to: '/docs/intro',
+          type: 'docSidebar',
+          sidebarId: 'tutorialSidebar',
+          position: 'left',
           label: 'Documentation',
-          position: 'left',
         },
-        {
-          to: 'https://blog.tomascorreia.net',
-          label: 'Blog',
-          position: 'left',
-        },
+        {to: '/blog', label: 'Blog', position: 'left'},
         {
           href: 'https://github.com/corrreia/docs-blog',
           label: 'GitHub',
@@ -104,11 +102,11 @@ const config: Config = {
           items: [
             {
               label: 'Docs',
-              to: 'https://docs.tomascorreia.net/docs',
+              to: '/docs/intro',
             },
             {
               label: 'Blog',
-              to: 'https://blog.tomascorreia.net/blog',
+              to: '/blog',
             },
           ],
         },

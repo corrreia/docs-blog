@@ -44,12 +44,12 @@ export default function Home(): ReactNode {
             </Link>
             <Link
               className="button button--secondary button--lg"
-              to="https://blog.tomascorreia.net">
+              to="/blog">
               My Blog
             </Link>
             <Link
               className="button button--secondary button--lg"
-              to="https://docs.tomascorreia.net">
+              to="/docs/intro">
               My Docs
             </Link>
             <Link
