@@ -41,6 +41,11 @@ After much consideration, I decided to go with [Talos](https://talos.dev/), a mo
 
 ## Setting up Talos
 
+:::warning
+This is a high-level overview of the setup process.
+For way more detailed instructions, please refer to my documentation [here](https://example.com).
+:::
+
 Since I have the resources available, and if it isn't obvious by now, I decided to go with a virtualized setup. After downloading the [Talos ISO image](https://factory.talos.dev/), I uploaded it to my Proxmox VE environment.
 
 ### Virtual Machines
@@ -80,10 +85,6 @@ In addition to those IPs, I also reserved `10.10.0.50` for the control plane VIP
 ### The Talos cluster
 
 Before creating our k8s environment, we need to configure the Talos cluster. This involves setting up the control plane and worker nodes, as well as configuring the networking and storage options.
-
-:::note    
-For way more detailed instructions, please refer to my documentation [here](https://example.com).
-:::
 
 This is actually a really simple process, after installing the [`talosctl`](https://www.talos.dev/v1.10/talos-guides/install/talosctl/) utility, we can generate the necessary secrets and configuration files.
 
