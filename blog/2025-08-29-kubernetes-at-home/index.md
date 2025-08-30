@@ -105,6 +105,12 @@ talosctl gen config name-of-cluster https://10.10.0.50:6443 \
   --output ./clusterconfig
 ```
 
+Point `talosctl` to the correct configuration directory:
+
+```
+export TALOSCONFIG=$PWD/clusterconfig/talosconfig
+```
+
 This generated the configuration files for the cluster in `./clusterconfig`.
 
 Edit the `./clusterconfig/controlplane.yaml` file to set the correct VIP and the nic settings.
@@ -167,17 +173,17 @@ Now that your Talos cluster is up and running with k8s installed, you can access
 1. **Get the kubeconfig file**:
 
 ```
-talosctl kubeconfig -n 10.10.0.51 --force
+talosctl kubeconfig -n 10.10.0.51 -f clusterconfig/kubeconfig --force
 ```
 
 :::note
-This will place the kubeconfig file in `~/.kube/config`.
+This will place the kubeconfig file in `./clusterconfig/kubeconfig`.
 :::
 
 2. **Set the KUBECONFIG environment variable**:
 
 ```
-export KUBECONFIG=~/.kube/config
+export KUBECONFIG=$PWD/clusterconfig/kubeconfig
 ```
 
 3. **Verify the connection**:
@@ -192,4 +198,28 @@ talos-l5m-ljy   Ready    control-plane   5h39m   v1.33.4
 talos-v9n-17e   Ready    worker          5h38m   v1.33.4
 ```
 
+:::info
+As you saw, I placed all configuration files in the `clusterconfig` directory, I like to keep things together.
+
+Since I moved them from the default location, I needed to change the `TALOSCONFIG` and `KUBECONFIG` environment variables.
+
+```bash
+correia@talos-ctl:~/talos$ tree .
+.
+├── clusterconfig
+│   ├── controlplane.yaml
+│   ├── kubeconfig
+│   ├── talosconfig
+│   └── worker.yaml
+├── README.md
+└── secrets.yaml
+
+```
+:::
+
 And you're all set! You can now start deploying applications to your Kubernetes cluster. 🚀
+
+
+:::warning
+This blogpost is still a work in progress and may be updated with more information in the future.
+:::
